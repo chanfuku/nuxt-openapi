@@ -8,7 +8,7 @@ services:
         #   sh -c 'npm run apiclient:generate && npm run dev'
     volumes:
       - ./front:/app
-      - ./api-types:/app/api-types
+      - ./api-docs:/app/api-docs
     working_dir: /app
     ports:
       - "3000:3000"
@@ -21,7 +21,7 @@ services:
       #   sh -c 'node ./generate-ts-types.js && npm run dev'
     volumes:
       - ./api:/app
-      - ./api-types:/app/src/api-types
+      - ./api-docs:/app/src/api-docs
     working_dir: /app
     ports:
       - "4000:4000"

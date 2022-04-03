@@ -7,7 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "api-client:generate": "./node_modules/@openapitools/openapi-generator-cli/main.js generate -i ./api-types/v1/api.yml -g typescript-axios -o ./api-client"
+    "generate:api-client": "./node_modules/@openapitools/openapi-generator-cli/main.js generate -i ./api-docs/v1/api.yml -g typescript-axios -o ./api-client"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
