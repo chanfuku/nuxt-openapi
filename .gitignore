@@ -103,6 +103,11 @@ dist
 # TernJS port file
 .tern-port
 
+# database
 data/
 
+# Open Api Client
 front/api-client
+
+# Api Auto Generated Types
+api/src/api-types
