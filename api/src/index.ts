@@ -15,7 +15,7 @@ createConnection().then(async connection => {
   // register express routes from defined application routes
   initialize({
     app,
-    apiDoc: 'src/v1/api-doc.yml',
+    apiDoc: 'src/api-types/v1/api.yml',
     paths: 'src/paths',
     dependencies: {
       petService,

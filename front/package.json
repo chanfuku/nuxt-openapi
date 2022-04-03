@@ -1,0 +1,24 @@
+{
+  "name": "nuxt_app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "api-client:generate": "./node_modules/@openapitools/openapi-generator-cli/main.js generate -i ./api-types/v1/api.yml -g typescript-axios -o ./api-client"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "core-js": "^3.15.1",
+    "leaflet-draw": "^1.0.4",
+    "nuxt": "^2.15.7",
+    "nuxt-leaflet": "^0.0.27"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.15.7",
+    "@nuxt/typescript-build": "^2.1.0",
+    "@openapitools/openapi-generator-cli": "^2.4.25"
+  }
+}
