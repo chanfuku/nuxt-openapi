@@ -1,0 +1,54 @@
+version: "3.7"
+services:
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+        # command: >
+        #   sh -c 'npm run apiclient:generate && npm run dev'
+    volumes:
+      - ./front:/app
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    environment:
+      HOST: 0.0.0.0
+    tty: true
+  api:
+    image: node:16.13.2
+      # command: >
+      #   sh -c 'node ./generate-ts-types.js && npm run dev'
+    volumes:
+      - ./api:/app
+    working_dir: /app
+    ports:
+      - "4000:4000"
+    environment:
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    tty: true
+  db:
+    image: "mysql:5.7.10"
+    volumes:
+      - ./data/db:/var/lib/mysql:cached
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - 80:80
+    depends_on:
+      - front
+      - api
+      - db
+
