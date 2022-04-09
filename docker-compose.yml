@@ -16,9 +16,7 @@ services:
       HOST: 0.0.0.0
     tty: true
   api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
+    image: node:16.13.2
     command: >
       sh -c 'npm install && npm run generate:api-types && npm run start'
     volumes:

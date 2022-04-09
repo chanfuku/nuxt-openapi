@@ -110,4 +110,4 @@ data/
 front/api-client
 
 # Open Api Auto Generated Types
-api/src/types
+api/src/api-types
