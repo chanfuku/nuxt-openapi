@@ -29,8 +29,8 @@ export default class Pet extends VuexModule {
   }
 
   @Mutation
-  private SET_PET ({ pet }: { pet: ApiClient.Pet }) {
-    this._pet = { ...this._pet, ...pet }
+  private SET_PET (payload: {}) {
+    this._pet = { ...this._pet, ...payload }
   }
 
   @Action({ rawError: true })
@@ -40,13 +40,28 @@ export default class Pet extends VuexModule {
   }
 
   @Action({ rawError: true })
-  public async fetchPet (id: number) {
-    const pet = await (await apiClientWrapper().showPetById(String(id))).data
-    this.SET_PET({ pet })
+  public async fetchPet (petId: string) {
+    const pet = await (await apiClientWrapper().showPetById(petId)).data
+    this.SET_PET(pet)
   }
 
   @Action({ rawError: true })
   public async register (petNew: ApiClient.PetNew) {
     await apiClientWrapper().createPet(petNew)
+  }
+
+  @Action({ rawError: true })
+  public async setPet (payload: {}) {
+    this.SET_PET(payload)
+  }
+
+  @Action({ rawError: true })
+  public async update (petId: string) {
+    await apiClientWrapper().updatePet(petId, this.pet)
+  }
+
+  @Action({ rawError: true })
+  public async delete (petId: string) {
+    await apiClientWrapper().deletePet(petId)
   }
 }

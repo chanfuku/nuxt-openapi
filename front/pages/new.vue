@@ -12,7 +12,7 @@ import { petStore } from '~/store'
 export default defineComponent({
   name: 'New',
   setup () {
-    const name = ref('')
+    const name = ref(undefined)
     const router = useRouter()
 
     const submit = async () => {
@@ -21,7 +21,8 @@ export default defineComponent({
         await petStore.register(petNew)
         router.push('/')
       } catch (e) {
-        console.log(e)
+        console.error(e)
+        alert(e)
       }
     }
 

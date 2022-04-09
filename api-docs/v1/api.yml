@@ -57,6 +57,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+
   /pets/{petId}:
     get:
       summary: Info for a specific pet
@@ -79,7 +80,50 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-
+    put:
+      summary: Update a pet
+      operationId: updatePet
+      tags:
+        - pets
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          description: The id of the pet to retrieve
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/UpdatePet'
+      responses:
+        '200':
+          $ref: '#/components/responses/Pet'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: delete a pet
+      operationId: deletePet
+      tags:
+        - pets
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          description: The id of the pet to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Null response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   requestBodies:
     CreatePet:
@@ -88,6 +132,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PetNew'
+    UpdatePet:
+      description: JSON object for updating a pet 
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pet'
   responses:
     Pet:
       description: Expected response to a valid request

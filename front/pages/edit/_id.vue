@@ -1,12 +1,13 @@
 <template>
   <div>
+    <p><NuxtLink to="/">一覧</NuxtLink></p>
     <input v-model="name" type="text">
     <input type="submit" @click="submit">
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, useContext, useFetch, useRouter } from '@nuxtjs/composition-api'
+import { computed, defineComponent, ref, useContext, useFetch, useRouter, useRoute, ComputedRef } from '@nuxtjs/composition-api'
 import { petStore } from '~/store'
 
 export default defineComponent({
@@ -14,12 +15,11 @@ export default defineComponent({
   setup () {
     const router = useRouter()
     const route: ComputedRef<VueRouter.Route> = useRoute()
-    const id = Number(route.value.params.id)
+    const id = route.value.params.id
     const name = computed({
       get: () => petStore.pet.name,
       set: value => petStore.setPet({ name: value })
     })
-
 
     useFetch(async () => {
       await petStore.fetchPet(id)
@@ -27,11 +27,11 @@ export default defineComponent({
 
     const submit = async () => {
       try {
-        const petNew = { name: name.value }
-        await petStore.update(petNew)
+        await petStore.update(id)
         router.push('/')
       } catch (e) {
-        console.log(e)
+        console.error(e)
+        alert(e)
       }
     }
 
