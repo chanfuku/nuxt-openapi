@@ -49,8 +49,8 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/CreatePet'
       responses:
-        '201':
-          description: Null response
+        '200':
+          $ref: '#/components/responses/Pet'
         default:
           description: unexpected error
           content:
@@ -72,11 +72,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Expected response to a valid request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Pet"
+          $ref: '#/components/responses/Pet'
         default:
           description: unexpected error
           content:
@@ -92,6 +88,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PetNew'
+  responses:
+    Pet:
+      description: Expected response to a valid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pet'
   schemas:
     PetNew:
       type: object

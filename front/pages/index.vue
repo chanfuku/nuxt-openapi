@@ -1,8 +1,9 @@
 <template>
   <div>
     <p><NuxtLink to="/new">新規登録</NuxtLink></p>
+    {{ pets }}
     <div v-for="pet in pets" :key="pet.id">
-      <span>{{ pet.name }}</span>
+      <span @click="$router.push(`/edit/${pet.id}`)">{{ pet.id }} : {{ pet.name }}</span>
     </div>
   </div>
 </template>
