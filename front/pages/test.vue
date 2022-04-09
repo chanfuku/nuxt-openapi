@@ -29,6 +29,7 @@ export default Vue.extend({
   async fetch(): Promise<void> {
     log('fetch')
     await this.$store.dispatch('fetchRandomCat')
+    await this.$store.dispatch('fetchPets')
   },
   async mounted(): Promise<void> {
     log('mounted')

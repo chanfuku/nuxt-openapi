@@ -1,4 +1,8 @@
 export default {
+  env: {
+    apiBaseUrl: process.env.API_BASE_URL || 'http://localhost/api'
+  },
+
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -48,7 +52,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  // axios: {
+  //   baseURL: process.env.API_BASE_URL
+  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

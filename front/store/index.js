@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import * as ApiClient from '~/api-client'
+import { apiClientWrapper } from '~/utils/api'
 
 export const state = () => ({
   images: [],
@@ -41,4 +43,8 @@ export const actions = {
   async updateRightLine ({ commit }, payload) {
     commit('UPDATE_RIGHT_LINE', payload)
   },
+  async fetchPets ({ commit }) {
+    const result = await apiClientWrapper().listPets(10)
+    console.log(result)
+  }
 }
