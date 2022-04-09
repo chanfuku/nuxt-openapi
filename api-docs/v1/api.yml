@@ -43,9 +43,11 @@ paths:
                 $ref: "#/components/schemas/Error"
     post:
       summary: Create a pet
-      operationId: createPets
+      operationId: createPet
       tags:
         - pets
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePet'
       responses:
         '201':
           description: Null response
@@ -81,8 +83,23 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+
 components:
+  requestBodies:
+    CreatePet:
+      description: JSON object for creating a pet 
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PetNew'
   schemas:
+    PetNew:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
     Pet:
       type: object
       required:
@@ -93,8 +110,6 @@ components:
           type: integer
           format: int64
         name:
-          type: string
-        tag:
           type: string
     Pets:
       type: array

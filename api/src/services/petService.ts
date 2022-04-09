@@ -8,10 +8,14 @@ export const petService: PetService = {
   },
   async findOne(id: number): Promise<Pet | undefined> {
     return await getRepository(PetEntity).findOne(id)
+  },
+  async register(pet: Pet): Promise<Pet> {
+    return await getRepository(PetEntity).save(pet)
   }
 }
 
 export interface PetService {
   find: () => Promise<Pet[]>,
-  findOne: (id: number) => Promise<Pet | undefined>
+  findOne: (id: number) => Promise<Pet | undefined>,
+  register: (pet: Pet) => Promise<Pet>
 }

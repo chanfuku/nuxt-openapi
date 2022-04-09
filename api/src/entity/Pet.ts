@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn} from "typeorm";
 
 @Entity()
 export class Pet {
@@ -9,6 +9,6 @@ export class Pet {
     @Column()
     name!: string;
 
-    @Column({type: 'varchar', length: 255, nullable: true})
-    tag?: string;
+    @CreateDateColumn({name: 'created_at'})
+    createdAt!: Date;
 }

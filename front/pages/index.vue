@@ -1,28 +1,26 @@
 <template>
   <div>
-    <h1>Nuxt.js Rendering mode: SPA(Single Page App)</h1>
-    <p><a href="/test">aタグでテストページへ</a></p>
-    <p><button @click="next">window.location.hrefでテストページへ</button></p>
-    <p><NuxtLink to="/test">NuxtLinkでテストページへ</NuxtLink></p>
-    <p><button @click="push">$router.pushでテストページへ</button></p>
-    <p><NuxtLink to="/leaflet">leafletページへ</NuxtLink></p>
+    <p><NuxtLink to="/new">新規登録</NuxtLink></p>
+    <div v-for="pet in pets" :key="pet.id">
+      <span>{{ pet.name }}</span>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { computed, defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
+import { petStore } from '~/store'
 
-export default Vue.extend({
-  async fetch(): Promise<void> {
-    console.log('index.vueです')
-  },
-  methods: {
-    async push(): Promise<void> {
-      this.$router.push('/test')
-    },
-    async next(): Promise<void> {
-      window.location.href = '/test'
-    },
+export default defineComponent({
+  name: 'Top',
+  setup () {
+    const pets = computed(() => petStore.pets)
+
+    useFetch(async () => {
+      await petStore.fetchPets()
+    })
+
+    return { pets }
   },
 })
 </script>

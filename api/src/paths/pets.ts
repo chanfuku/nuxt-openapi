@@ -9,8 +9,13 @@ export default (petService: PetService) => {
     return res.status(200).json(await petService.find());
   }
 
-  const POST = (req: Request, res: Response, next: NextFunction) => {
-    res.status(200);
+  const POST = async (req: Request, res: Response, next: NextFunction): Promise<Response<number> | undefined>=> {
+    try {
+      const pet = await petService.register(req.body)
+      return res.status(200).json({id: pet.id})
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   return {
