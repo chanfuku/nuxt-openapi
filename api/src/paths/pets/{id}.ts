@@ -1,7 +1,10 @@
+import { Pet } from "../../types/api";
+
 export default (petService) => {
 
   const GET = (req, res, next) => {
-    res.status(200).json(petService.getPet(Number(req.params.id)));
+    const data: Pet[] = petService.getPet(Number(req.params.id));
+    res.status(200).json(data);
   }
 
   return {

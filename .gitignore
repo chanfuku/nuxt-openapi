@@ -109,5 +109,5 @@ data/
 # Open Api Client
 front/api-client
 
-# Api Auto Generated Types
-api/src/api-types
+# Open Api Auto Generated Types
+api/src/types
