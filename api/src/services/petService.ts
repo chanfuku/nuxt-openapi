@@ -1,13 +1,17 @@
-const pets = [
-  {id: 1, name: 'aaa'},
-  {id: 2, name: 'bbb'},
-]
+import { Pet } from "../types/api"
+import { Pet as PetEntity } from "../entity/Pet"
+import { getConnection, getRepository } from 'typeorm';
 
-export const petService = {
-  getPets() {
-    return pets
+export const petService: PetService = {
+  async find(): Promise<Pet[]> {
+    return await getRepository(PetEntity).find() 
   },
-  getPet(id: number) {
-    return pets.find(pet => pet.id === id)
+  async findOne(id: number): Promise<Pet | undefined> {
+    return await getRepository(PetEntity).findOne(id)
   }
+}
+
+export interface PetService {
+  find: () => Promise<Pet[]>,
+  findOne: (id: number) => Promise<Pet | undefined>
 }
