@@ -1,13 +1,13 @@
 # nuxt-openapi
 
 ## front
-nuxt.js, typescript, openapitools/openapi-generator-cli, vuex-module-decorators
+nuxt:2.15, typescript, openapitools/openapi-generator-cli, vuex-module-decorators
 
 ## api
-node.js, typescript, typeorm, express, express-openapi, openapi-typescript-code-generator
+ts-node:10.4, typescript, typeorm:0.2, express:4.17, express-openapi, openapi-typescript-code-generator
 
 ## middleware
-nginx, mysql
+nginx:1.21.4, mysql:5.7.1
 
 ## set up
 ```
@@ -16,4 +16,10 @@ cd nuxt-openapi
 cp .env.example .env
 cp ./front/.env.local ./front/.env
 docker-compose up
+.
+.
+.
+it will take about 5 min for initial build...
+please visit http://localhost
 ```
+
