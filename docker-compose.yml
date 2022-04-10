@@ -32,6 +32,8 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     tty: true
+    depends_on:
+      - db
   db:
     image: "mysql:5.7.10"
     volumes:
