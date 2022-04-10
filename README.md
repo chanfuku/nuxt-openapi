@@ -1,13 +1,22 @@
 # nuxt-openapi
 
 ## front
-nuxt:2.15, typescript, openapitools/openapi-generator-cli, vuex-module-decorators
+* nuxt:2.15
+* typescript
+* openapitools/openapi-generator-cli
+* vuex-module-decorators
 
 ## api
-ts-node:10.4, typescript, typeorm:0.2, express:4.17, express-openapi, openapi-typescript-code-generator
+* ts-node:10.4
+* typescript
+* typeorm:0.2
+* express:4.17
+* express-openapi
+* openapi-typescript-code-generator
 
 ## middleware
-nginx:1.21.4, mysql:5.7.1
+* nginx:1.21.4
+* mysql:5.7.1
 
 ## set up
 ```
@@ -19,7 +28,7 @@ docker-compose up
 .
 .
 .
-it will take about 5 min for initial build...
+it will take about 5 min to build...
+
 please visit http://localhost
 ```
-
