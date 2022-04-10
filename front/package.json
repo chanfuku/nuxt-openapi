@@ -13,9 +13,7 @@
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/composition-api": "^0.32.0",
     "core-js": "^3.15.1",
-    "leaflet-draw": "^1.0.4",
     "nuxt": "^2.15.7",
-    "nuxt-leaflet": "^0.0.27",
     "vuex-module-decorators": "^1.2.0"
   },
   "devDependencies": {
