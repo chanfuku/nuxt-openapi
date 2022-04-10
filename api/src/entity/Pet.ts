@@ -6,7 +6,7 @@ export class Pet {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column()
+    @Column({comment: '名前', length: 10})
     name!: string;
 
     @CreateDateColumn({name: 'created_at'})

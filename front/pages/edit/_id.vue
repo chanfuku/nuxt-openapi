@@ -14,7 +14,7 @@ export default defineComponent({
   name: 'Edit',
   setup () {
     const router = useRouter()
-    const route: ComputedRef<VueRouter.Route> = useRoute()
+    const route = useRoute()
     const id = route.value.params.id
     const name = computed({
       get: () => petStore.pet.name,

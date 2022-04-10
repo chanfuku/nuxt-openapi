@@ -14,7 +14,7 @@ export default (petService: PetService) => {
       const pet = await petService.register(req.body)
       return res.status(200).json(pet)
     } catch (e) {
-      console.error(e)
+      next(e)
     }
   }
 

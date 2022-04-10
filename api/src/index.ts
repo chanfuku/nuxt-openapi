@@ -28,6 +28,13 @@ createConnection().then(async connection => {
     }
   });
 
+  app.use(((e, req, res, next) => {
+    console.error(e);
+    const message = `${e.errors[0].path} ${e.errors[0].message}`;
+    res.status(500).json(message);
+    next(e);
+  }) as express.ErrorRequestHandler);
+
   // start express server
   app.listen(4000);
   console.log('Express server has started on port 4000. please check http://localhost:4000/v1/pets');

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p><NuxtLink to="/">一覧</NuxtLink></p>
     <input v-model="name" type="text">
     <input type="submit" @click="submit">
   </div>
@@ -12,7 +13,7 @@ import { petStore } from '~/store'
 export default defineComponent({
   name: 'New',
   setup () {
-    const name = ref(undefined)
+    const name = ref('')
     const router = useRouter()
 
     const submit = async () => {

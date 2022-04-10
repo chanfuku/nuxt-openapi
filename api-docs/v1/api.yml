@@ -153,6 +153,8 @@ components:
       properties:
         name:
           type: string
+          minLength: 1
+          maxLength: 10
     Pet:
       type: object
       required:
@@ -164,6 +166,8 @@ components:
           format: int64
         name:
           type: string
+          minLength: 1
+          maxLength: 10
     Pets:
       type: array
       items:

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate:api-types": "docker-compose exec api npm run generate:types && docker-compose exec front npm run generate:api-client"
+    "generate:types": "docker-compose exec api npm run generate:api-types && docker-compose exec front npm run generate:api-client"
   },
   "repository": {
     "type": "git",
