@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, useContext, useFetch } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useFetch } from '@nuxtjs/composition-api'
 import { petStore } from '~/store'
 
 export default defineComponent({
@@ -34,7 +34,11 @@ export default defineComponent({
       }
     }
 
-    return { pets, deleteClick }
+    const countPet = () => {
+      return `${pets.value.length}匹です`
+    }
+
+    return { pets, deleteClick, countPet }
   },
 })
 </script>

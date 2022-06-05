@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, useContext, useFetch, useRouter, useRoute, ComputedRef } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useFetch, useRouter, useRoute, ComputedRef } from '@nuxtjs/composition-api'
 import { petStore } from '~/store'
 
 export default defineComponent({
